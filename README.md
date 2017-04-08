@@ -1,4 +1,4 @@
-# tag-wrapper README
+# tag-wrapper
 
 This is the README for your extension "tag-wrapper". 
 
@@ -21,7 +21,7 @@ on your vscode custom keybind setting file.
 
 ## Release Notes
 
-###0.1.1
+### 0.1.1
 base function 
 
 -----------------------------------------------------------------------------------------------------------
