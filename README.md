@@ -1,6 +1,6 @@
 # tag-wrapper
 
-This is the README for your extension "tag-wrapper". 
+This is the README for this extension. 
 
 ## Features
 
