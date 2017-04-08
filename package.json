@@ -1,5 +1,5 @@
 {
-    "name": "html tag wrapper",
+    "name": "html-tag-wrapper",
     "displayName": "html tag wrapper",
     "description": "wrap selected html tag by press ctrl+i, you can change the wrapper tag name simply too",
     "version": "0.1.1",

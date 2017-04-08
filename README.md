@@ -4,7 +4,7 @@ This is the README for this extension.
 
 ## Features
 
-![Example](https://github.com/hwen/tag-wrapper/blob/master/preview.gif)
+![Example](https://github.com/hwen/tag-wrapper/raw/master/preview.gif)
 
 ## Extension Settings
 
