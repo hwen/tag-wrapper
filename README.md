@@ -17,8 +17,7 @@ The default keybinding of this plugin is ctrl+i. You can change it by adding
   "when": "editorTextFocus" 
 }
 ```
-
-"key" is your custom keybinding
+on your vscode custom keybind setting file. 
 
 ## Release Notes
 
