@@ -4,7 +4,7 @@ This is the README for your extension "tag-wrapper".
 
 ## Features
 
-![Example](https://github.com/hwen/tag-wrapper/master/preview.gif)
+![Example](https://github.com/hwen/tag-wrapper/blob/master/preview.gif)
 
 ## Extension Settings
 
