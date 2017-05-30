@@ -1,6 +1,6 @@
 # tag-wrapper
 
-This is the README for this extension. 
+You can use it in jsx like environments(Vue, React...) too
 
 ## Features
 
@@ -8,21 +8,24 @@ This is the README for this extension.
 
 ## Extension Settings
 
-The default keybinding of this plugin is ctrl+i. You can change it by adding 
+The default keybinding of this plugin is ctrl+i. You can change it by adding
 
 ```
-{ 
-  "key": "ctrl+shift+i",                
+{
+  "key": "ctrl+shift+i",
   "command": "extension.wrapTag",
-  "when": "editorTextFocus" 
+  "when": "editorTextFocus"
 }
 ```
-on your vscode custom keybind setting file. 
+on your vscode custom keybind setting file.
 
 ## Release Notes
 
 ### 0.1.1
-base function 
+base function
+
+### 0.1.4
+support jsx like environments.
 
 -----------------------------------------------------------------------------------------------------------
 
