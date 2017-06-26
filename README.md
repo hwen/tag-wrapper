@@ -4,7 +4,7 @@ You can use it in jsx like environments(Vue, React...) too
 
 ## Features
 
-![Example](https://github.com/hwen/tag-wrapper/raw/master/preview.gif)
+![Example](https://github.com/hwen/tag-wrapper/raw/master/images/preview.gif)
 
 ## Extension Settings
 

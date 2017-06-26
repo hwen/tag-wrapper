@@ -1,8 +1,6 @@
 'use strict';
 import { commands, window, TextDocument, TextEditorEdit, ExtensionContext, Position, SnippetString, Selection } from 'vscode';
 
-const isHtml = require('is-html')
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: ExtensionContext) {
@@ -46,9 +44,7 @@ class TagWrapper {
   }
 
   get isAvaliableTag(): boolean {
-    const isEndOfTagSelected = this.selectedText && />$/.test(this.selectedText.trim())
-
-    return isEndOfTagSelected && isHtml(this.selectedText);
+    return /\<(.|\n)*\>/g.test(this.selectedText);
   }
 
   private generateSnippet(): SnippetString {

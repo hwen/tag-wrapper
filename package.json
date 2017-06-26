@@ -2,8 +2,9 @@
   "name": "html-tag-wrapper",
   "displayName": "html tag wrapper",
   "description": "wrap selected html tag by press ctrl+i, you can change the wrapper tag name simply too",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "publisher": "hwencc",
+  "icon": "images/icon.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/hwen/tag-wrapper"
@@ -42,6 +43,5 @@
     "@types/mocha": "^2.2.32"
   },
   "dependencies": {
-    "is-html": "^1.1.0"
   }
 }
