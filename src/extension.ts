@@ -51,7 +51,7 @@ class TagWrapper {
     let sn = new SnippetString();
 
     sn.appendText('<')
-    sn.appendTabstop(1)
+    // sn.appendTabstop(1)
     sn.appendPlaceholder(`${this.replacementTag}`, 1)
     sn.appendText(`>\n${this.selectedText}</`)
     sn.appendPlaceholder(`${this.replacementTag}`, 1)
@@ -62,13 +62,22 @@ class TagWrapper {
 
   //format multi line selected text
   private formatSelectedText(selectedText: string, selection: Selection): string {
-    let start = selection.start.character,
-      textArr = selectedText.split('\n');
+    let start = selection.start.character;
+    let textArr;
+    let endLine;
+
+    if (selectedText.indexOf('\n') > -1) {
+      textArr = selectedText.split('\n')
+      endLine = '\n'
+    } else {
+      textArr = selectedText.split('\r')
+      endLine = '\r'
+    }
 
     let formated = '';
     textArr.forEach((line, index) => {
 
-      formated += index === 0 ? `\t${line}\n` : `\t${line.substr(start)}\n`;
+      formated += index === 0 ? `\t${line}${endLine}` : `\t${line.substr(start)}${endLine}`;
 
     })
 
