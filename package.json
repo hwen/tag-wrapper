@@ -2,7 +2,7 @@
   "name": "html-tag-wrapper",
   "displayName": "html tag wrapper",
   "description": "wrap selected html tag by press ctrl+i, you can change the wrapper tag name simply too",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "hwencc",
   "icon": "images/icon.png",
   "repository": {

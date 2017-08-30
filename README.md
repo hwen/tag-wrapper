@@ -2,6 +2,8 @@
 
 You can use it in jsx like environments(Vue, React...) too
 
+You may install [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) to support your tab/space style
+
 [![Version](https://vsmarketplacebadge.apphb.com/version/hwencc.html-tag-wrapper.svg)](https://marketplace.visualstudio.com/items?itemName=hwencc.html-tag-wrapper)
 [![Installs](https://vsmarketplacebadge.apphb.com/installs/hwencc.html-tag-wrapper.svg)](https://marketplace.visualstudio.com/items?itemName=hwencc.html-tag-wrapper)
 [![Ratings](https://vsmarketplacebadge.apphb.com/rating/hwencc.html-tag-wrapper.svg)](https://marketplace.visualstudio.com/items?itemName=hwencc.html-tag-wrapper)
