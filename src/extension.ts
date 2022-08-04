@@ -5,24 +5,37 @@ import { commands, window, TextDocument, TextEditorEdit, ExtensionContext, Posit
 // your extension is activated the very first time the command is executed
 export function activate(context: ExtensionContext) {
 
-  let disposable = commands.registerCommand('extension.wrapTag', () => {
-
+  let wrapTag = commands.registerCommand('extension.wrapTag', () => {
     const editor = window.activeTextEditor;
-
     // if (!editor || !(editor.document.languageId === 'html')) return;
-    if (!editor) return;
-
+    if (!editor)
+        return;
     let selection = editor.selection;
     let selectedText = editor.document.getText(selection);
     let wrapper = new TagWrapper(selectedText, selection);
-
     if (wrapper.isAvaliableTag) {
-      editor.insertSnippet(wrapper.snippet); //insert snippet to replace the selection text
+        editor.insertSnippet(wrapper.snippet); //insert snippet to replace the selection text
     }
+  });
 
-  })
+  let wrapTagNewLine = commands.registerCommand('extension.wrapTagNewLine', () => {
+      const editor = window.activeTextEditor;
+      // if (!editor || !(editor.document.languageId === 'html')) return;
+      if (!editor)
+          return;
+      let selection = editor.selection;
+      let selectedText = editor.document.getText(selection);
+      let wrapper = new TagWrapper(selectedText, selection, true);
 
-  context.subscriptions.push(disposable);
+      // turned off availableTag check because i still cant find its uses
+      // and personally i think it's better this way
+      
+      // if (wrapper.isAvaliableTag) {
+          editor.insertSnippet(wrapper.snippet); //insert snippet to replace the selection text
+      // }
+  });
+
+  context.subscriptions.push(wrapTag, wrapTagNewLine);
 }
 
 
@@ -35,8 +48,8 @@ class TagWrapper {
   private replacementTag = 'div';
   private selectedText: string;
 
-  constructor(selectedText: string, selection: Selection) {
-    this.selectedText = this.formatSelectedText(selectedText, selection);
+  constructor(selectedText: string, selection: Selection, addNewLine : boolean = false) {
+    this.selectedText = this.formatSelectedText(selectedText, selection, addNewLine);
   }
 
   get snippet(): SnippetString {
@@ -50,36 +63,54 @@ class TagWrapper {
   private generateSnippet(): SnippetString {
     let sn = new SnippetString();
 
-    sn.appendText('<')
+    sn.appendText('<');
     // sn.appendTabstop(1)
-    sn.appendPlaceholder(`${this.replacementTag}`, 1)
-    sn.appendText(`>\n${this.selectedText}</`)
-    sn.appendPlaceholder(`${this.replacementTag}`, 1)
-    sn.appendText('>')
-
+    sn.appendPlaceholder(`${this.replacementTag}`, 1);
+    sn.appendText(`>${this.selectedText}</`);
+    sn.appendPlaceholder(`${this.replacementTag}`, 1) // [the said above]
+    //sn.appendText(`${this.replacementTag}`); // i use this one instead of [the above] since i use "auto rename tag" extension
+    sn.appendText('>');
+    
     return sn;
   }
 
   //format multi line selected text
-  private formatSelectedText(selectedText: string, selection: Selection): string {
+  private formatSelectedText(selectedText: string, selection: Selection, addNewLine : boolean): string {
     let start = selection.start.character;
     let textArr;
     let endLine;
+    let formated;
 
-    if (selectedText.indexOf('\n') > -1) {
-      textArr = selectedText.split('\n')
-      endLine = '\n'
+    if (!addNewLine){
+        if (selectedText.indexOf('\n') > -1) {
+            textArr = selectedText.split('\n');
+            endLine = '\n';
+        }
+        else {
+            textArr = selectedText.split('\r');
+            endLine = '\r';
+        }
+        formated = '';
+        textArr.forEach((line, index) => {
+            formated += index === 0 ? `${line}` : `\t${line.substr(start)}`;
+            if (index+1 < textArr.length){
+                formated += `${endLine}`
+            }
+        });
     } else {
-      textArr = selectedText.split('\r')
-      endLine = '\r'
+        if (selectedText.indexOf('\n') > -1) {
+            textArr = selectedText.split('\n');
+            endLine = '\n';
+        }
+        else {
+            textArr = selectedText.split('\r');
+            endLine = '\r';
+        }
+        formated = `${endLine}`
+        textArr.forEach((line, index) => {
+            formated += index === 0 ? `\t${line}${endLine}` : `\t${line.substr(start)}${endLine}`;
+        });
     }
-
-    let formated = '';
-    textArr.forEach((line, index) => {
-
-      formated += index === 0 ? `\t${line}${endLine}` : `\t${line.substr(start)}${endLine}`;
-
-    })
 
     return formated;
   };
